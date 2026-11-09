@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dragonfly Cakes and More per le aziende: dolci e prodotti da forno artigianali per eventi, negozi e ristoranti. Richiedi un preventivo.">
+  <title>Per le Aziende — Dragonfly Cakes and More</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/cookie-consent.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="nav-container">
+
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Dragonfly Cakes and More — Home">
+          <img src="images/logo/libellula-dragonfly.png"
+               alt="Dragonfly"
+               class="nav-logo-img">
+          <div class="nav-logo-text">
+            <span class="nav-logo-brand">Dragonfly</span>
+            <span class="nav-logo-sub">cakes and More</span>
+          </div>
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+
+      <ul class="nav-links">
+        <li><a href="chi-siamo.html"   class="nav-link">Chi sono</a></li>
+        <li><a href="bakery.html"      class="nav-link">Bakery &amp; stagionale</a></li>
+        <li><a href="cake-design.html" class="nav-link">cake design</a></li>
+        <li><a href="tradizione.html"  class="nav-link">Tradizione</a></li>
+        <li><a href="aziende.html"     class="nav-link active">Per le Aziende</a></li>
+        <li><a href="contatti.html"    class="nav-link">Contatti</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+ 
+  <!-- ===== CALL TO ACTION ===== -->
+  <section class="contact-methods">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lavoriamo insieme?</h2>
+        <p>Ospiti un piccolo evento?</p>
+        <p>Sei un negozio di alimentari interessato ai prodotti da forno?</p>
+        <p>Hai un ristorante e vuoi offrire ai tuoi clienti dei dessert artigianali?</p>
+                <p><strong>Contattami per un preventivo al <a href="tel:+393534997642">353 499 7642</a>. Oppure:</strong></p>
+        <p>
+          <a href="https://wa.me/+393534997642?text=Ciao!%20Vorrei%20un%20preventivo%20per..." class="btn btn-primary" target="_blank">
+            Scrivi su WhatsApp
+          </a>
+          <a href="mailto:contatti@dragonflycakesandmore.it" class="btn btn-primary">
+            Invia email
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <h4>Dragonfly Cakes and More</h4>
+          <p>Impresa alimentare domestica<br>Goito, Mantova<br><br>P.IVA 02801090206</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigazione</h4>
+          <ul>
+            <li><a href="chi-siamo.html">Chi sono</a></li>
+            <li><a href="bakery.html">Bakery &amp; stagionale</a></li>
+            <li><a href="cake-design.html">Cake design</a></li>
+            <li><a href="tradizione.html">Tradizione</a></li>
+            <li><a href="aziende.html">Per le Aziende</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li> <li><a href="cookie-policy.html">Cookie Policy</a></li> 
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contatti</h4>
+          <p>📱 <a href="https://wa.me/+393534997642">353 499 7642</a></p>
+          <p>✉️ <a href="mailto:contatti@dragonflycakesandmore.it">contatti@dragonflycakesandmore.it</a></p>
+          <p>📍 Goito, Mantova</p>
+          <p style="margin-top:12px;">
+            <a href="https://www.instagram.com/dragonflycakesandmore/" target="_blank">Instagram</a> ·
+            <a href="https://www.facebook.com/Dragonflycakesandmore/" target="_blank">Facebook</a>
+          </p>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        © 2026 Dragonfly Cakes and More — Goito, Mantova. Tutti i diritti riservati —
+        Powered by caffeine and optimism ♥
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle   = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle) {
+      toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+      document.querySelectorAll('.nav-link').forEach(l =>
+        l.addEventListener('click', () => navLinks.classList.remove('open'))
+      );
+    }
+  </script>
+
+</body>
+</html>

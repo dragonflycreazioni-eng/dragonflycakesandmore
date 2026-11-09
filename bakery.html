@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bakery stagionale Dragonfly: salato e dolci da forno su ordinazione. Pizze, focacce, panini, rolls, cookies, brownies, donuts, cupcakes e muffins.">
+  <title>Bakery & Stagionale — Dragonfly Cakes and More</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/cookie-consent.js" defer></script>
+
+  <style>
+    /* ── PAGE HERO COMPATTA ── */
+    .page-hero {
+      position: relative;
+      background: #243F4A;
+      overflow: hidden;
+      padding: 52px 80px;
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .page-hero-circles {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 340px;
+      height: 340px;
+      pointer-events: none;
+    }
+
+    .page-hero-circles span {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .page-hero-circles span:nth-child(1) { width:340px; height:340px; background:rgba(255,255,255,0.02); }
+    .page-hero-circles span:nth-child(2) { width:255px; height:255px; background:rgba(255,255,255,0.03); }
+    .page-hero-circles span:nth-child(3) { width:170px; height:170px; background:rgba(255,255,255,0.04); }
+    .page-hero-circles span:nth-child(4) { width:90px;  height:90px;  background:rgba(255,255,255,0.05); }
+
+    .page-hero-left {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      padding-right: 80px;
+    }
+
+    .page-hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 10px;
+    }
+
+    .page-hero-left h1 {
+      font-family: var(--font-serif);
+      color: var(--white);
+      font-size: 2.2rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .page-hero-right {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+    }
+
+    .page-hero-right h2 {
+      font-family: var(--font-serif);
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .page-hero-right p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      line-height: 1.75;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      max-width: 480px;
+    }
+
+    /* ── CAROSELLO PRODOTTI ── */
+    .prodotti-carousel-section {
+      padding: 72px 0 56px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .prodotti-carousel-header {
+      max-width: 1200px;
+      margin: 0 auto 36px;
+      padding: 0 40px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .prodotti-carousel-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .prodotti-carousel-header h2 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .prodotti-carousel-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .prodotti-carousel-nav button {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--green);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .prodotti-carousel-nav button:hover {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+
+    .prodotti-carousel-outer {
+      overflow: hidden;
+      padding: 8px 40px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .prodotti-carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Card carosello prodotto */
+    .prodotto-card {
+      flex: 0 0 260px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 2px 12px rgba(44,74,66,0.06);
+    }
+
+    .prodotto-card:hover,
+    .prodotto-card.active {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(44,74,66,0.13);
+    }
+
+    .prodotto-card.active {
+      border-color: var(--green);
+    }
+
+    .prodotto-card-img {
+      height: 180px;
+      overflow: hidden;
+      background: var(--warm);
+      position: relative;
+    }
+
+    .prodotto-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .prodotto-card:hover .prodotto-card-img img {
+      transform: scale(1.04);
+    }
+
+    .prodotto-card-img.ph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    /* gradiente placeholder bakery: terra calda */
+    .ph-bakery { background: linear-gradient(135deg, #e8ddd0, #c9b99a); }
+
+    .prodotto-card-body {
+      padding: 18px 20px 20px;
+    }
+
+    .prodotto-card-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .prodotto-card-body p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .prodotto-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+      transition: gap var(--transition);
+    }
+
+    .prodotto-card:hover .prodotto-card-cta { gap: 8px; }
+
+    /* ── SCHEDE ESPANDIBILI ── */
+    .schede-section {
+      background: var(--warm);
+      padding: 0 0 80px;
+    }
+
+    .scheda-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .scheda {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .scheda.visible {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .scheda-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scheda-inner:last-child {
+      border-bottom: none;
+    }
+
+    .scheda-img {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--warm);
+      box-shadow: 0 8px 32px rgba(44,74,66,0.10);
+    }
+
+    .scheda-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .scheda-img.ph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    .scheda-content h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .scheda-desc {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .scheda-storia {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--muted);
+      padding-left: 20px;
+      border-left: 2px solid var(--green);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .scheda-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .scheda-tag {
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── CTA ── */
+    .page-cta {
+      background: var(--cream);
+      padding: 72px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .page-cta h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .page-cta p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .page-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 40px 28px;
+      }
+      .page-hero-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        padding-right: 0;
+        padding-bottom: 24px;
+        width: 100%;
+      }
+      .page-hero-circles { display: none; }
+
+      .scheda-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 0;
+      }
+
+      .prodotti-carousel-outer { padding: 8px 24px 16px; }
+      .prodotti-carousel-header { padding: 0 24px; }
+      .scheda-container { padding: 0 24px; }
+    }
+
+    [data-published="false"] { display: none !important; }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <div class="nav-logo">
+      <a href="index.html" aria-label="Dragonfly Cakes and More — Home">
+        <img src="images/logo/libellula-dragonfly.png"
+             alt="Dragonfly"
+             class="nav-logo-img">
+        <div class="nav-logo-text">
+          <span class="nav-logo-brand">Dragonfly</span>
+          <span class="nav-logo-sub">cakes and More</span>
+        </div>
+      </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+
+    <ul class="nav-links">
+      <li><a href="chi-siamo.html"   class="nav-link">Chi sono</a></li>
+      <li><a href="bakery.html"      class="nav-link active">Bakery &amp; stagionale</a></li>
+      <li><a href="cake-design.html" class="nav-link">cake design</a></li>
+      <li><a href="tradizione.html"  class="nav-link">Tradizione</a></li>
+      <li><a href="aziende.html"     class="nav-link">Per le Aziende</a></li>
+      <li><a href="contatti.html"    class="nav-link">Contatti</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+<!-- ═══ PAGE HERO COMPATTA ═══ -->
+<section class="page-hero">
+  <div class="page-hero-circles">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="page-hero-left">
+    <p class="page-hero-eyebrow">Dragonfly Cakes and More</p>
+    <h1>Bakery &amp;<br>Stagionale</h1>
+  </div>
+  <div class="page-hero-right">
+    <h2>Il forno non va mai in ferie.</h2>
+    <p>Non è vero. Ci va eccome! Questa è la parte più viva del menu: dove l'ispirazione ha mano libera e la stagione detta l'agenda. Qualcosa arriva e qualcosa va.</p>
+  </div>
+</section>
+
+
+<!-- ═══ CAROSELLO PRODOTTI ═══ -->
+<section class="prodotti-carousel-section">
+  <div class="prodotti-carousel-header">
+    <h2>Cosa c'è <em>nel forno</em></h2>
+    <div class="prodotti-carousel-nav">
+      <button id="bak-prev" aria-label="Precedente">&#8592;</button>
+      <button id="bak-next" aria-label="Successivo">&#8594;</button>
+    </div>
+  </div>
+
+  <div class="prodotti-carousel-outer">
+    <div class="prodotti-carousel-track" id="bak-track">
+
+      <div class="prodotto-card active" data-published="true" onclick="mostraScheda('pizze', this)">
+        <div class="prodotto-card-img ph ph-bakery"><img src="images/bakery/pizzette.jpg" alt="Pizze e pizzette"></div>
+        <div class="prodotto-card-body">
+          <h3>Pizze e pizzette</h3>
+          <p>Su ordinazione per eventi, feste e occasioni.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('rolls', this)">
+        <div class="prodotto-card-img">
+          <img src="images/bakery/cinnamon_1.jpg" alt="Cinnamon Rolls">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Cinnamon Rolls</h3>
+          <p>Soffici e profumati</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('cookies', this)">
+        <div class="prodotto-card-img">
+          <img src="images/bakery/double_chocolate_cookies.jpg" alt="Cookies artigianali">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Cookies</h3>
+          <p>Croccanti fuori, morbidi dentro.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+       <div class="prodotto-card" data-published="true" onclick="mostraScheda('focacce', this)">
+        <div class="prodotto-card-img ph ph-bakery"><img src="images/bakery/focaccia_1.png" alt="Focacce"></div>
+        <div class="prodotto-card-body">
+          <h3>Focacce</h3>
+          <p>Su ordinazione per eventi, feste e occasioni.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('panini', this)">
+        <div class="prodotto-card-img ph ph-bakery"><img src="images/bakery/panini_2.png" alt="Panini da buffet"></div>
+        <div class="prodotto-card-body">
+          <h3>Panini da buffet</h3>
+          <p>Morbidi, farciti e pensati per sparire in fretta.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+           <div class="prodotto-card" data-published="false" onclick="mostraScheda('crostata', this)">
+        <div class="prodotto-card-img">
+          <img src="images/bakery/crostata-ciliegie-cioccolato.png" alt="Crostata ciliegia e cioccolato">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Crostata ciliegia e cioccolato</h3>
+          <span class="prodotto-card-cta">Scopri →</span>
+          </div>
+       </div>
+
+      <div class="prodotto-card" data-published="false" onclick="mostraScheda('brownies', this)">
+        <div class="prodotto-card-img">
+          <img src="images/bakery/brownies.jpg" alt="Brownies e Blondies">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Brownies & Blondies</h3>
+          <p>Densi, fondenti, con quella crosticina in superficie che è il segnale di un lavoro ben fatto.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="false" onclick="mostraScheda('donuts', this)">
+        <div class="prodotto-card-img ph ph-bakery">🍩</div>
+        <div class="prodotto-card-body">
+          <h3>Donuts</h3>
+          <p>Lievitati, glassati, disponibili in gusti classici e stagionali.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="false" onclick="mostraScheda('cupcakes', this)">
+        <div class="prodotto-card-img">
+          <img src="images/bakery/cupcakes.jpg" alt="Cupcakes">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Cupcakes</h3>
+          <p>Base soffice, frosting a swirl alto. Anche personalizzati per feste ed eventi.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="false" onclick="mostraScheda('muffins', this)">
+        <div class="prodotto-card-img">
+          <img src="images/bakery/muffin.jpg" alt="Muffins">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Muffins</h3>
+          <p>Con il cappello alto come si deve. Gusti stagionali, ottimi anche il giorno dopo.</p>
+          <span class="prodotto-card-cta">Scopri →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SCHEDE ESPANDIBILI ═══ -->
+<section class="schede-section">
+  <div class="scheda-container">
+
+    <!-- Pizze e pizzette -->
+    <div class="scheda visible" id="scheda-pizze">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-bakery"><img src="images/bakery/pizzette.jpg" alt="Pizze e pizzette"></div>
+        <div class="scheda-content">
+          <h2>Pizze e pizzette</h2>
+          <p class="scheda-desc">Impasto soffice e ben pomodorito. difficilmente ne mangerai una sola! Su ordinazione, disponibili in teglia, monoporzione o bocconcino da buffet.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Teglia intera</span>
+            <span class="scheda-tag">Monoporzione</span>
+            <span class="scheda-tag">Buffet</span>
+            <span class="scheda-tag">Su ordinazione</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crostata ciliegia e cioccolato -->
+<div class="scheda" id="scheda-crostata">
+  <div class="scheda-inner">
+    <div class="scheda-img">
+      <img src="images/bakery/fetta_cioccolato_ciliegie.png" alt="Crostata ciliegia e cioccolato — sezione">
+    </div>
+    <div class="scheda-content">
+      <h2>Crostata ciliegia e cioccolato</h2>
+      <p class="scheda-desc">Una crostata moderna ed elegante con 5 strati bilanciatissimi: frolla al cacao, frangipane alla nocciola e fondente, curd di ciliegie, ganache fondente e ciliegie fresche. Disponibile su ordinazione, finché le ciliegie sono buone.</p>
+      <div class="scheda-tags">
+        <span class="scheda-tag">Stagionale</span>
+        <span class="scheda-tag">Su ordinazione</span>
+      </div>
+      <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+    </div>
+  </div>
+</div>
+
+    <!-- Focacce -->
+    <div class="scheda" id="scheda-focacce">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-bakery"><img src="images/bakery/focaccia_2.png" alt="Focacce"></div>
+        <div class="scheda-content">
+          <h2>Focacce</h2>
+          <p class="scheda-desc">Di cos'hai voglia oggi? Bianca all'olio, barese con i pomodorini, o vegetariana? C'è una teglia per tutti.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Teglia intera</span>
+            <span class="scheda-tag">Farciture stagionali</span>
+            <span class="scheda-tag">Su ordinazione</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panini da buffet -->
+    <div class="scheda" id="scheda-panini">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-bakery"><img src="images/bakery/panini_2.png" alt="Panini da buffet"></div>
+        <div class="scheda-content">
+          <h2>Panini da buffet</h2>
+          <p class="scheda-desc">Morbidi, farciti o da farcire. disponibili nella versione in teglia pull-apart da condividere oppure nel classico bocconcino singolo.         <div class="scheda-tags">
+            <span class="scheda-tag">Pull apart 24 pz</span>
+            <span class="scheda-tag">Teglia bocconcini 24 pz</span>
+            <span class="scheda-tag">Farciti o da farcire</span>
+            <span class="scheda-tag">Su ordinazione</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cinnamon Rolls -->
+    <div class="scheda" id="scheda-rolls">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/bakery/cinnamon_rolls.jpeg" alt="Cinnamon Rolls">
+        </div>
+        <div class="scheda-content">
+          <h2>Cinnamon Rolls</h2>
+          <p class="scheda-desc">Volendo, con la glassa al cream cheese. Ma non ci limitiamo alla cannella. Stay tuned 😎. Disponibili in box da 6 o in teglia intera da 12 per quando la situazione lo richiede.</p>
+          <p class="scheda-storia">Nati in Scandinavia come Kanelbullar — più compatti e speziati — e poi adottati dall'America in versione più morbida e generosa di glassa, e di infinite varianti.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Box da 6</span>
+            <span class="scheda-tag">Box da 12</span>
+            <span class="scheda-tag">Teglia intera</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookies -->
+    <div class="scheda" id="scheda-cookies">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/bakery/double_chocolate_cookies.jpg" alt="Cookies artigianali">
+        </div>
+        <div class="scheda-content">
+          <h2>Cookies</h2>
+          <p class="scheda-desc">...Oppure croccanti ovunque, se preferisci così.I gusti cambiano a rotazione, come le stagioni.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Box da 6</span>
+            <span class="scheda-tag">Box da 12</span>
+            <span class="scheda-tag">Gusti stagionali</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brownies & Blondies -->
+    <div class="scheda" id="scheda-brownies">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/bakery/brownies.jpg" alt="Brownies e Blondies">
+        </div>
+        <div class="scheda-content">
+          <h2>Brownies & Blondies</h2>
+          <p class="scheda-desc">I brownies: densi, fondenti, con quella crosticina sottile in superficie che è il segno di un lavoro ben riuscito. Il cioccolato è fondente e di qualità — non è un dettaglio. Disponibili nella versione classica e, a rotazione, con noci pecan, caramello salato o lamponi. I blondies sono la variante alla vaniglia e zucchero di canna, altrettanto seri.</p>
+          <p class="scheda-storia">Anche il brownie ha la sua leggenda di nascita accidentale. Quello che è certo è che dalla fine dell'Ottocento non se n'è andato più — e guardando il risultato, è comprensibile.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Monoporzione</span>
+            <span class="scheda-tag">Box da 6</span>
+            <span class="scheda-tag">Teglia</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donuts -->
+    <div class="scheda" id="scheda-donuts">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-bakery">🍩</div>
+        <div class="scheda-content">
+          <h2>Donuts</h2>
+          <p class="scheda-desc">Lievitati — non fritti in olio vecchio come nei supermercati, ma fatti come si deve: impasto soffice, lievitazione lenta, glassa generosa. Disponibili nei gusti classici (cioccolato, vaniglia, caramello) e in versioni stagionali che cambiano con il calendario e con la voglia del momento.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Box da 6</span>
+            <span class="scheda-tag">Gusti stagionali</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cupcakes -->
+    <div class="scheda" id="scheda-cupcakes">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/bakery/cupcakes.jpg" alt="Cupcakes">
+        </div>
+        <div class="scheda-content">
+          <h2>Cupcakes</h2>
+          <p class="scheda-desc">Base soffice, frosting a swirl alto — la parte in cui smetti di leccare il cucchiaio solo perché qualcuno ti guarda. I gusti cambiano con la stagione e l'occasione; disponibili anche in versione personalizzata per compleanni, feste ed eventi.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Box da 6</span>
+            <span class="scheda-tag">Box da 12</span>
+            <span class="scheda-tag">Personalizzabili</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Muffins -->
+    <div class="scheda" id="scheda-muffins">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/bakery/muffin.jpg" alt="Muffins">
+        </div>
+        <div class="scheda-content">
+          <h2>Muffins</h2>
+          <p class="scheda-desc">Con il cappello alto come si deve, e senza quella densità da mattone che rovina la categoria. Gusti stagionali: frutti di bosco, mirtilli e limone, banana — no aspetta, quella no. Mela e cannella, cioccolato fondente, quello che la stagione suggerisce. Ottimi caldi, resistono bene anche il giorno dopo — ammesso che avanzino.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Box da 6</span>
+            <span class="scheda-tag">Gusti stagionali</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═══ -->
+<section class="page-cta">
+  <div class="container">
+    <h2>Vuoi ordinare?</h2>
+    <p>Tutto su ordinazione, tutto fresco. Contattami per disponibilità, gusti del momento e tempi di preparazione.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Contattami su WhatsApp</a>
+      <a href="mailto:contatti@dragonflycakesandmore.it" class="btn btn-secondary">Scrivi un'email</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h4>Dragonfly Cakes and More</h4>
+        <p>Impresa alimentare domestica<br>Goito, Mantova<br><br>P.IVA 02801090206</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigazione</h4>
+        <ul>
+          <li><a href="chi-siamo.html">Chi sono</a></li>
+          <li><a href="bakery.html">Bakery &amp; stagionale</a></li>
+          <li><a href="cake-design.html">Cake design</a></li>
+          <li><a href="tradizione.html">Tradizione</a></li>
+          <li><a href="aziende.html">Per le Aziende</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li> <li><a href="cookie-policy.html">Cookie Policy</a></li> 
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <p>📱 <a href="https://wa.me/+393534997642">353 499 7642</a></p>
+        <p>✉️ <a href="mailto:contatti@dragonflycakesandmore.it">contatti@dragonflycakesandmore.it</a></p>
+        <p>📍 Goito, Mantova</p>
+        <p style="margin-top:12px;">
+          <a href="https://www.instagram.com/dragonflycakesandmore/" target="_blank">Instagram</a> ·
+          <a href="https://www.facebook.com/Dragonflycakesandmore/" target="_blank">Facebook</a>
+        </p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      © 2026 Dragonfly Cakes and More — Goito, Mantova. Tutti i diritti riservati —
+      Powered by caffeine and optimism ♥
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Hamburger ──
+  const toggle   = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle) {
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-link').forEach(l =>
+      l.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+  }
+
+  // ── Carosello prodotti ──
+  const track   = document.getElementById('bak-track');
+  const prevBtn = document.getElementById('bak-prev');
+  const nextBtn = document.getElementById('bak-next');
+  const CARD_W  = 284; // 260px + 24px gap
+  let offset = 0;
+
+  function maxOffset() {
+    const visible = Math.floor(track.parentElement.offsetWidth / CARD_W);
+    return Math.max(0, track.children.length - visible);
+  }
+
+  nextBtn.addEventListener('click', () => {
+    offset = Math.min(offset + 1, maxOffset());
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+  prevBtn.addEventListener('click', () => {
+    offset = Math.max(offset - 1, 0);
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+  window.addEventListener('resize', () => {
+    offset = Math.min(offset, maxOffset());
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+
+  // ── Schede espandibili ──
+  function mostraScheda(id, cardEl) {
+    document.querySelectorAll('.scheda').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.prodotto-card').forEach(c => c.classList.remove('active'));
+
+    const scheda = document.getElementById('scheda-' + id);
+    if (scheda) {
+      scheda.classList.add('visible');
+      scheda.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (cardEl) cardEl.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="I dolci della tradizione mantovana fatti a mano su ordinazione. Torta di Rose, Sbrisolona, Anello di Monaco, Bisolàn, Torta Paradiso e Torta Mantovana.">
+  <title>Tradizione Mantovana — Dragonfly Cakes and More</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+   <script src="js/cookie-consent.js" defer></script>
+<style>
+  /* ── HERO TRADIZIONE ── */
+
+  .intro-strip.hero-tradizione {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+
+    background-color: var(--cream);
+    background-image: url("images/tradizione/torta-rose2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 68% center;
+
+    color: var(--text);
+    padding: 80px 0;
+  }
+
+  
+
+  /* Testo sopra l'overlay */
+  .hero-tradizione .intro-strip-inner {
+    position: relative;
+    z-index: 1;
+
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 40px;
+
+    text-align: center;
+  }
+
+  .hero-tradizione .hero-tradizione-brand,
+  .hero-tradizione .hero-tradizione-quote,
+  .hero-tradizione .hero-tradizione-desc {
+    color: var(--text);
+  }
+  .hero-tradizione h1 {
+   display: inline-block;
+  padding: 0.12em 0.28em 0.18em;
+  border-radius: 0.15em;
+
+  color: var(--green-dark);
+  background: rgba(250, 250, 252, 0.42);
+
+  text-shadow:
+    0 1px 2px rgba(250, 250, 252, 0.95),
+    0 0 12px rgba(250, 250, 252, 0.75);
+}
+
+  .hero-tradizione .hero-tradizione-brand {
+    font-family: var(--font-sans);
+  }
+
+  .hero-tradizione h1 {
+    font-family: var(--font-serif);
+  }
+
+  .hero-tradizione .hero-tradizione-quote,
+  .hero-tradizione .hero-tradizione-desc {
+    font-family: var(--font-sans);
+  }
+
+  /* ── MOBILE ── */
+
+  @media (max-width: 700px) {
+    .intro-strip.hero-tradizione {
+      min-height: 520px;
+      background-position: 60% top;
+    }
+
+    .hero-tradizione .intro-strip-inner {
+      padding: 0 24px;
+    }
+  }
+
+  /* ── CAROSELLO PRODOTTI ── */
+    .prodotti-carousel-section {
+      padding: 22px 0 56px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .prodotti-carousel-header {
+    max-width: 1200px;
+    margin: 6px auto 16px;
+    padding: 0 40px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+    .prodotti-carousel-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .prodotti-carousel-header h2 em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .prodotti-carousel-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .prodotti-carousel-nav button {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--green);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    .prodotti-carousel-nav button:hover {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+
+    .prodotti-carousel-outer {
+      overflow: hidden;
+      padding: 8px 40px 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .prodotti-carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Card carosello prodotto */
+    .prodotto-card {
+      flex: 0 0 260px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 2px 12px rgba(44,74,66,0.06);
+    }
+
+    .prodotto-card:hover,
+    .prodotto-card.active {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(44,74,66,0.13);
+    }
+
+    .prodotto-card.active {
+      border-color: var(--green);
+    }
+
+    .prodotto-card-img {
+      height: 180px;
+      overflow: hidden;
+      background: var(--warm);
+      position: relative;
+    }
+
+    .prodotto-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .prodotto-card:hover .prodotto-card-img img {
+      transform: scale(1.04);
+    }
+
+    /* placeholder quando manca la foto */
+    .prodotto-card-img.ph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .ph-tradiz { background: linear-gradient(135deg,#ede8dc,#d8d0bc); }
+
+    .prodotto-card-body {
+      padding: 18px 20px 20px;
+    }
+
+    .prodotto-card-num {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+
+    .prodotto-card-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .prodotto-card-body p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .prodotto-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+      transition: gap var(--transition);
+    }
+
+    .prodotto-card:hover .prodotto-card-cta { gap: 8px; }
+
+    /* ── SCHEDE ESPANDIBILI ── */
+    .schede-section {
+      background: var(--warm);
+      padding: 0 0 80px;
+    }
+
+    .scheda-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .scheda {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .scheda.visible {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .scheda-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .scheda-inner:last-child {
+      border-bottom: none;
+    }
+
+    .scheda-img {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--warm);
+      box-shadow: 0 8px 32px rgba(44,74,66,0.10);
+    }
+
+    .scheda-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .scheda-img.ph {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    .scheda-content h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .scheda-desc {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .scheda-storia {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--muted);
+      padding-left: 20px;
+      border-left: 2px solid var(--green);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .scheda-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .scheda-tag {
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── CTA ── */
+    .page-cta {
+      background: var(--cream);
+      padding: 72px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .page-cta h2 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .page-cta p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .page-hero-content { padding: 0 28px 40px; }
+      .page-hero-content h1 { font-size: 2.2rem; }
+
+      .scheda-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 0;
+      }
+
+      .prodotti-carousel-outer { padding: 8px 24px 16px; }
+      .prodotti-carousel-header { padding: 0 24px; }
+      .scheda-container { padding: 0 24px; }
+    }
+
+    [data-published="false"] { display: none !important; }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <div class="nav-logo">
+      <a href="index.html" aria-label="Dragonfly Cakes and More — Home">
+        <img src="images/logo/libellula-dragonfly.png"
+             alt="Dragonfly" class="nav-logo-img">
+        <div class="nav-logo-text">
+          <span class="nav-logo-brand">Dragonfly</span>
+          <span class="nav-logo-sub">cakes and More</span>
+        </div>
+      </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+
+   <ul class="nav-links">
+      <li><a href="chi-siamo.html"   class="nav-link">Chi sono</a></li>
+      <li><a href="bakery.html"      class="nav-link">Bakery &amp; stagionale</a></li>
+      <li><a href="cake-design.html" class="nav-link">cake design</a></li>
+      <li><a href="tradizione.html"  class="nav-link active">Tradizione</a></li>
+      <li><a href="aziende.html"     class="nav-link">Per le Aziende</a></li>
+      <li><a href="contatti.html"    class="nav-link">Contatti</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+<!-- ═══ HERO TRADIZIONE ═══ -->
+<section class="intro-strip hero-tradizione">
+  <div class="intro-circles">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="intro-strip-inner">
+    <p class="hero-tradizione-brand">
+    <h1>Tradizione Mantovana</h1>
+    
+  </div>
+</section>
+
+<!-- ═══ CAROSELLO PRODOTTI ═══ -->
+<section class="prodotti-carousel-section">
+  <div class="prodotti-carousel-header">
+    <h2>Prima erano ricette nuove <br>poi qualcuno le ha fatte così bene <em>da non poterle più dimenticare.</em></h2>
+    <div class="prodotti-carousel-nav">
+      <button id="trad-prev" aria-label="Precedente">&#8592;</button>
+      <button id="trad-next" aria-label="Successivo">&#8594;</button>
+    </div>
+  </div>
+
+  <div class="prodotti-carousel-outer">
+    <div class="prodotti-carousel-track" id="trad-track">
+
+       <div class="prodotto-card active" data-published="true" onclick="mostraScheda('anello-monaco', this)">
+        <div class="prodotto-card-img">
+          <img src="images/tradizione/anello-di-monaco.jpg" alt="Anello di Monaco">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Anello di Monaco</h3>
+          <p>Il dolce natalizio dei mantovani. Ha il grosso inconveniente di creare dipendenza.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('torta-rose', this)">
+        <div class="prodotto-card-img">
+          <img src="images/tradizione/torta-di-rose.jpg" alt="Torta di Rose">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Torta di Rose</h3>
+          <p>Lievitato soffice in forma di bouquet — dal Rinascimento alla tua tavola.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('sbrisolona', this)">
+        <div class="prodotto-card-img">
+          <img src="images/tradizione/sbrisolona.jpg" alt="Sbrisolona">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Sbrisolona</h3>
+          <p>Croccante, decisa, da spezzare con le mani. Non provare col coltello.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="false" onclick="mostraScheda('bisolan', this)">
+        <div class="prodotto-card-img ph ph-tradiz">🌾</div>
+        <div class="prodotto-card-body">
+          <h3>Bisolàn</h3>
+          <p>Il dolce beneaugurale di Sant'Antonio. Si inzuppava nel Lambrusco. O nel caffelatte.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('torta-paradiso', this)">
+        <div class="prodotto-card-img">
+          <img src="images/tradizione/torta-paradiso.jpg" alt="Torta Paradiso">
+        </div>
+        <div class="prodotto-card-body">
+          <h3>Torta Paradiso</h3>
+          <p>Non mette tutti d'accordo. Ma se ben fatta, dà un piacere imbattibile.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="false" onclick="mostraScheda('torta-mantovana', this)">
+        <div class="prodotto-card-img ph ph-tradiz">🥚</div>
+        <div class="prodotto-card-body">
+          <h3>Torta Mantovana</h3>
+          <p>Un dolce tipico di Prato. Il nome è mantovano. La storia è un mistero.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+      <div class="prodotto-card" data-published="true" onclick="mostraScheda('torta-elvezia', this)">
+        <div class="prodotto-card-img ph ph-tradiz"><img src="images/tradizione/torta-elvezia.png" alt="Torta Elvezia"></div>
+        <div class="prodotto-card-body">
+          <h3>Torta Elvezia</h3>
+          <p>Classica, decisa, buona.</p>
+          <span class="prodotto-card-cta">Leggi la storia →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SCHEDE ESPANDIBILI ═══ -->
+<section class="schede-section">
+  <div class="scheda-container">
+
+    <!-- Anello di Monaco -->
+    <div class="scheda visibile" id="scheda-anello-monaco">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/tradizione/anello-di-monaco.jpg" alt="Anello di Monaco">
+        </div>
+        <div class="scheda-content">
+          <h2>Anello di Monaco</h2>
+          <p class="scheda-desc">Il dolce natalizio dei mantovani: impasto soffice e leggero, con una farcitura generosa di nocciole, mandorle e castagne — perché su quello non si lesina. La versione classica ha la glassa di zucchero, ma su richiesta è disponibile anche con glassatura al cioccolato. Ha il grosso inconveniente di creare dipendenza.</p>
+          <p class="scheda-storia">Nonostante il nome, non ha niente a che fare con la città di Monaco né con i monaci. È stato creato da un cuoco svizzero in attività a Mantova, che si ispirò al tradizionale Kugelhupf della sua terra — e Mantova lo ha adottato come proprio dolce delle feste.</p>
+          <div class="scheda-tags">
+            <span class="scheda-tag">Formato unico</span>
+            <span class="scheda-tag">Tiratura limitata</span>
+          </div>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Torta di Rose -->
+    <div class="scheda" id="scheda-torta-rose">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/tradizione/torta-di-rose.jpg" alt="Torta di Rose">
+        </div>
+        <div class="scheda-content">
+          <h2>Torta di Rose</h2>
+          <p class="scheda-desc">Un dolce lievitato soffice e profumatissimo, perfetto per i tuoi momenti speciali. L'impasto avvolto su se stesso crea la forma di un bouquet in fiore — da qui il nome, e da qui la difficoltà di fermarsi a una fetta sola.</p>
+          <p class="scheda-storia">Nata nel Rinascimento alla corte dei Gonzaga, in occasione delle nozze tra Francesco II ed Isabella d'Este. Il cuoco volle omaggiare la bellezza della sposa con un dolce dalla forma floreale. Fu talmente apprezzato da diventare presenza fissa ai banchetti — e da lì, nel tempo, simbolo della città.</p>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sbrisolona -->
+    <div class="scheda" id="scheda-sbrisolona">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/tradizione/sbrisolona.jpg" alt="Sbrisolona mantovana">
+        </div>
+        <div class="scheda-content">
+          <h2>Sbrisolona</h2>
+          <p class="scheda-desc">Dal gusto autentico, croccante e deciso come piace a noi. Non provare a tagliarla col coltello — si spezza con le mani, si condivide a pezzi, e così è che deve essere. Ideale per il fine pasto accompagnata da vini passiti o, per i più temerari, da un'ottima grappa.</p>
+          <p class="scheda-storia">Nasce come dolce povero della campagna mantovana — un ricostituente a base di ingredienti semplici per ritemprare le energie dei contadini dopo il lavoro nei campi. Con il tempo è stata raffinata e impreziosita dalle mandorle, grazie anche al palato esigente di Eleonora Gonzaga e alla mano sapiente del cuoco Bartolomeo Stefani.</p>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bisolàn -->
+    <div class="scheda" id="scheda-bisolan">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-tradiz">🌾</div>
+        <div class="scheda-content">
+          <h2>Bisolàn</h2>
+          <p class="scheda-desc">Per gli amanti della semplicità. Era il dolce tipico delle famiglie che dovevano fare festa con quello che c'era — e per lungo tempo è stato il dolce tradizionale di Natale, servito accompagnato dal Sugolo. Data la sua consistenza compatta, si soleva inzupparlo nel Lambrusco. Ma vi dirò che anche nel caffelatte è interessante.</p>
+          <p class="scheda-storia">Con il tempo è diventato la preparazione beneaugurale del giorno di Sant'Antonio Abate — per gli amici <em>"Sant'Antoni Chisulèr"</em>. Un antico detto avverte: senza questo dolce si rischia che il solaio vi cada in testa. Io vi ho avvertiti, poi fate voi.</p>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Torta Paradiso -->
+    <div class="scheda" id="scheda-torta-paradiso">
+      <div class="scheda-inner">
+        <div class="scheda-img">
+          <img src="images/tradizione/torta-paradiso.jpg" alt="Torta Paradiso">
+        </div>
+        <div class="scheda-content">
+          <h2>Torta Paradiso</h2>
+          <p class="scheda-desc">Non è un dolce che mette tutti d'accordo. Ma se ben fatta, dà a chi l'apprezza un piacere che altre preparazioni non sono in grado di eguagliare: un'impalpabile tripudio di burro con una crosticina che crea un contrasto sensoriale imbattibile.</p>
+          <p class="scheda-storia">Le sue origini non sono mantovane ma pavesi. Qui siamo inclusivi e vogliamo bene a tutti.</p>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Torta Mantovana -->
+    <div class="scheda" id="scheda-torta-mantovana">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-tradiz">🥚</div>
+        <div class="scheda-content">
+          <h2>Torta Mantovana</h2>
+          <p class="scheda-desc">Un dolce soffice, impreziosito dalle mandorle in superficie, molto apprezzato a diverse latitudini. La versione di Dragonfly non delude — né i mantovani doc né i forestieri di passaggio.</p>
+          <p class="scheda-storia">La Torta Mantovana è uno scherzo del destino: è tipica della città di Prato, nonostante il nome. Si dice che a darle il nome siano state due donne di origini mantovane — in alcune versioni due religiose in pellegrinaggio che lasciarono la ricetta per ringraziare dell'ospitalità, in altre cuoche di corte provenienti da Mantova e in servizio a Prato. Il mistero rimane. Intanto, girando per il centro di Mantova, la si trova in diverse pasticcerie storiche — e chi siamo noi per non farla?</p>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+     <!-- Torta Elvezia -->
+    <div class="scheda" id="scheda-torta-elvezia">
+      <div class="scheda-inner">
+        <div class="scheda-img ph ph-tradiz"><img src="images/tradizione/fetta-elvezia.png" alt="Torta Elvezia"></div>
+        <div class="scheda-content">
+          <h2>Torta Elvezia</h2>
+          <p class="scheda-desc">Dacquoise alle mandorle, crema al burro, zabaione. Cinque strati. Una botta de vita.</p>
+          <p class="scheda-storia">Nata a Mantova alla fine del Settecento dalle mani dei pasticcieri svizzeri Putscher, porta con sé i sapori della terra d'origine — e li sposa con lo zabaione, le cui origini sono contese come per tutte le cose buone, ma che i mantovani rivendicano come proprio. A voler essere sgordi, ci si può mettere anche il cioccolato fondente.</p>
+          <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Ordina su WhatsApp →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═══ -->
+<section class="page-cta">
+  <div class="container">
+    <h2>Vuoi ordinare?</h2>
+    <p>Tutto su ordinazione, tutto fresco. Contattami per disponibilità e tempi di preparazione.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Contattami su WhatsApp</a>
+      <a href="mailto:contatti@dragonflycakesandmore.it" class="btn btn-secondary">Scrivi un'email</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h4>Dragonfly Cakes and More</h4>
+        <p>Impresa alimentare domestica<br>Goito, Mantova<br><br>P.IVA 02801090206</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigazione</h4>
+        <ul>
+          <li><a href="chi-siamo.html">Chi sono</a></li>
+          <li><a href="bakery.html">Bakery &amp; stagionale</a></li>
+          <li><a href="cake-design.html">Cake design</a></li>
+          <li><a href="tradizione.html">Tradizione</a></li>
+          <li><a href="aziende.html">Per le Aziende</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li> <li><a href="cookie-policy.html">Cookie Policy</a></li>  <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <p>📱 <a href="https://wa.me/+393534997642">353 499 7642</a></p>
+        <p>✉️ <a href="mailto:contatti@dragonflycakesandmore.it">contatti@dragonflycakesandmore.it</a></p>
+        <p>📍 Goito, Mantova</p>
+        <p style="margin-top:12px;">
+          <a href="https://www.instagram.com/dragonflycakesandmore/" target="_blank">Instagram</a> ·
+          <a href="https://www.facebook.com/Dragonflycakesandmore/" target="_blank">Facebook</a>
+        </p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      © 2026 Dragonfly Cakes and More — Goito, Mantova. Tutti i diritti riservati —
+      Powered by caffeine and optimism ♥
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Hamburger ──
+  const toggle   = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle) {
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-link').forEach(l =>
+      l.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+  }
+
+  // ── Carosello prodotti ──
+  const track   = document.getElementById('trad-track');
+  const prevBtn = document.getElementById('trad-prev');
+  const nextBtn = document.getElementById('trad-next');
+  const CARD_W  = 284; // 260px + 24px gap
+  let offset = 0;
+
+  function maxOffset() {
+    const visible = Math.floor(track.parentElement.offsetWidth / CARD_W);
+    return Math.max(0, track.children.length - visible);
+  }
+
+  nextBtn.addEventListener('click', () => {
+    offset = Math.min(offset + 1, maxOffset());
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+  prevBtn.addEventListener('click', () => {
+    offset = Math.max(offset - 1, 0);
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+  window.addEventListener('resize', () => {
+    offset = Math.min(offset, maxOffset());
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+
+  // ── Schede espandibili ──
+  function mostraScheda(id, cardEl) {
+    // Nascondi tutte le schede
+    document.querySelectorAll('.scheda').forEach(s => s.classList.remove('visible'));
+    // Rimuovi active da tutte le card
+    document.querySelectorAll('.prodotto-card').forEach(c => c.classList.remove('active'));
+
+    // Mostra la scheda selezionata
+    const scheda = document.getElementById('scheda-' + id);
+    if (scheda) {
+      scheda.classList.add('visible');
+      // Scroll fluido alla scheda
+      scheda.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Marca la card come attiva
+    if (cardEl) cardEl.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

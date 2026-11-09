@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dragonfly Cakes and More - Dolci artigianali da forno su ordinazione. Dalla tradizione mantovana ai lievitati freschi, torte personalizzate e salato di qualità.">
+  <meta property="og:title" content="Dragonfly Cakes and More — Dolci Artigianali">
+  <meta property="og:description" content="Dolci artigianali da forno su ordinazione. Dalla tradizione mantovana ai lievitati freschi, torte personalizzate e salato di qualità.">
+  <meta property="og:image" content="images/hero/hero-main.jpg">
+  <meta property="og:url" content="https://www.dragonflycakesandmore.it">
+  <meta property="og:type" content="website">
+  <title>Dragonfly Cakes and More | Dolci Artigianali · Goito, Mantova</title>
+  <meta name="keywords" content="colazioni artigianali, forniture dolci bar, B&B Goito, prodotti da forno, impresa alimentare domestica">
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+   <script src="js/cookie-consent.js" defer></script>
+</head>
+
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-container">
+
+    <div class="nav-logo">
+      <a href="index.html" aria-label="Dragonfly Cakes and More — Home">
+        <img src="images/logo/libellula-dragonfly.png"
+             alt="Dragonfly" class="nav-logo-img">
+        <div class="nav-logo-text">
+          <span class="nav-logo-brand">Dragonfly</span>
+          <span class="nav-logo-sub">cakes and More</span>
+        </div>
+      </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+
+   <ul class="nav-links">
+      <li><a href="chi-siamo.html"   class="nav-link">Chi sono</a></li>
+      <li><a href="bakery.html" class="nav-link">Bakery &amp; stagionale</a></li>
+      <li><a href="cake-design.html" class="nav-link">cake design</a></li>
+      <li><a href="tradizione.html"  class="nav-link">Tradizione</a></li>
+      <li><a href="aziende.html"     class="nav-link">Per le Aziende</a></li>
+      <li><a href="contatti.html"    class="nav-link">Contatti</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+
+  <div class="hero-photo">
+    <img src="images/hero/hero-main.jpg"
+         alt="Dolci artigianali Dragonfly Cakes">
+  </div>
+
+  <div class="hero-bg-right"></div>
+
+  <div class="hero-circles">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">IAD · Goito, Mantova<br>
+      Torte personalizzate, dolci & salato
+    </p>
+    <h1 class="hero-tagline">Ti è venuta<br><strong>fame?</strong></h1>
+    <p class="hero-desc">
+      Dragonfly Cakes and More è un po’ come un negozio senza vetrina.<br> 
+    </p>
+    <a href="#contact" class="btn btn-primary">Scopri i prodotti →</a>
+  </div>
+
+</section>
+
+
+<!-- ═══ INTRO — solo testo ═══ -->
+<section class="intro-text">
+  <div class="container">
+    <div class="intro-text-inner">
+      <h2>Fatto su ordinazione</h2>
+      <p> Nel mio menu stagionale troverai prodotti della tradizione dolciaria mantovana, torte personalizzate e proposte salate da forno. Preparo tutto nel mio laboratorio, con ingredienti scelti e un occhio di riguardo per i prodotti del territorio..</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CAROSELLO ═══ -->
+<!--
+  ════════════════════════════════════════════════════════
+  AGGIORNAMENTO FACILE — come modificare i prodotti:
+
+  Ogni prodotto è un blocco che inizia con <a e finisce con </a>
+  Per AGGIUNGERE: copia un blocco intero e incollalo
+  Per RIMUOVERE: cancella il blocco da "PRODOTTO N" fino a </a>
+  Per MODIFICARE: cambia emoji, categoria e nome
+
+  COLORI SFONDO (classe del div interno):
+    cc-bakery  → verde menta
+    cc-tradiz  → beige dorato
+    cc-bento   → crema
+
+  Frecce: nascoste con display:none se hai 5 prodotti o meno.
+  Rimuovi display:none per mostrarle quando aggiungi prodotti.
+  ════════════════════════════════════════════════════════
+-->
+<section class="carousel-section" id="prodotti">
+  <div class="carousel-header">
+    <h2>In questo momento <em>in laboratorio</em></h2>
+    <div class="carousel-nav">
+      <button id="prev-btn" aria-label="Precedente" style="display:none">&#8592;</button>
+      <button id="next-btn" aria-label="Successivo" style="display:none">&#8594;</button>
+    </div>
+  </div>
+  <div class="carousel-outer">
+    <div class="carousel-track" id="carousel-track">
+
+      
+      <!-- PRODOTTO 1 -->
+      <a href="tradizione.html" class="carousel-card">
+        <div class="carousel-card-img cc-tradiz" style="padding:0; overflow:hidden;">
+  <img src="images/tradizione/anello-di-monaco.jpg"
+       alt="Anello di Monaco"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+        <div class="carousel-card-body">
+          <p class="carousel-card-cat">Tradizione</p>
+          <h4>Anello di Monaco</h4>
+        </div>
+      </a>
+
+      <!-- PRODOTTO 2 -->
+      <a href="tradizione.html" class="carousel-card">
+        <div class="carousel-card-img cc-tradiz" style="padding:0; overflow:hidden;">
+  <img src="images/prodotti/tradizione-mantovana.jpg"
+       alt="Torta di Rose"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+        <div class="carousel-card-body">
+          <p class="carousel-card-cat">Tradizione</p>
+          <h4>Torta di Rose</h4>
+        </div>
+      </a>
+
+       <!-- PRODOTTO 2 -->
+      <a href="bakery.html" class="carousel-card">
+        <div class="carousel-card-img cc-tradiz" style="padding:0; overflow:hidden;">
+  <img src="images/bakery/double_chocolate_cookies.jpg"
+       alt="Cookies"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+        <div class="carousel-card-body">
+          <p class="carousel-card-cat">Bakery</p>
+          <h4>Cookies</h4>
+        </div>
+      </a>
+
+       <!-- PRODOTTO 3 -->
+      <a href="tradizione.html" class="carousel-card">
+        <div class="carousel-card-img cc-tradiz" style="padding:0; overflow:hidden;">
+  <img src="images/tradizione/torta-elvezia.png"
+       alt="Torta Elvezia"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+        <div class="carousel-card-body">
+          <p class="carousel-card-cat">Tradizione</p>
+          <h4>Torta Elvezia</h4>
+        </div>
+      </a>
+  <!-- PRODOTTO 4 -->
+      <a href="bakery.html" class="carousel-card">
+        <div class="carousel-card-img cc-tradiz" style="padding:0; overflow:hidden;">
+  <img src="images/bakery/cinnamon_rolls.jpeg"
+       alt="cinnamon_rolls"
+       style="width:100%; height:100%; object-fit:cover; display:block;">
+</div>
+        <div class="carousel-card-body">
+          <p class="carousel-card-cat">Bakery</p>
+          <h4>Cinnamon rolls</h4>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TRUST ═══ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-grid">
+
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 40 40" fill="none">
+          <rect x="8" y="12" width="24" height="20" rx="1.5" stroke="white" stroke-width="1.3" opacity="0.75"/>
+          <path d="M14 12V9a6 6 0 0 1 12 0v3" stroke="white" stroke-width="1.3" opacity="0.75"/>
+          <circle cx="20" cy="22" r="3" stroke="white" stroke-width="1.3" opacity="0.85"/>
+        </svg>
+        <h3>Uno spazio tutto mio</h3>
+        <p>Produco in uno spazio dedicato esclusivamente alla lavorazione, separato dalla cucina di casa. Igiene, ordine e la giusta concentrazione su ogni prodotto.</p>
+      </div>
+
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="14" stroke="white" stroke-width="1.3" opacity="0.75"/>
+          <path d="M20 10v10l6 4" stroke="white" stroke-width="1.5" opacity="0.85"/>
+        </svg>
+        <h3>Solo su ordinazione</h3>
+        <p>Nessun prodotto in vetrina: ogni ordine viene preparato appositamente, nei tempi concordati</p>
+      </div>
+
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M8 20 Q20 8 32 20 Q20 32 8 20z" stroke="white" stroke-width="1.3" opacity="0.75"/>
+          <circle cx="20" cy="20" r="4" stroke="white" stroke-width="1.3" opacity="0.85"/>
+        </svg>
+        <h3>Ingredienti selezionati</h3>
+        <p>Tutte le materie prime vengono selezionate con cura. Nel menu trovi anche proposte vegan, preparate senza ingredienti di origine animale.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ COME ORDINARE ═══ -->
+<section class="how-to-order" id="contact">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Come ordinare</h2>
+      <p>Semplice, diretto, senza sorprese</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Scrivimi</h3>
+        <p>Contattami su WhatsApp per raccontarmi cosa cerchi — prodotto, quantità, data e eventuali esigenze alimentari.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Confermiamo insieme</h3>
+        <p>Ti rispondo entro 24 ore per confermare disponibilità, tempi di preparazione e preventivo. Nessuna sorpresa.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Ritiro o consegna</h3>
+        <p>Concordiamo ritiro a Goito o consegna nelle zone limitrofe. Il tuo ordine arriva fresco, pronto da gustare.</p>
+      </div>
+    </div>
+
+    <div class="contact-cta">
+      <a href="https://wa.me/+393534997642" class="btn btn-primary" target="_blank">Contattami su WhatsApp</a>
+      <p class="or-text">oppure</p>
+      <a href="mailto:contatti@dragonflycakesandmore.it" class="btn btn-secondary">Scrivi un'email</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h4>Dragonfly Cakes and More</h4>
+        <p>Impresa alimentare domestica<br>Goito, Mantova<br><br>P.IVA 02801090206</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigazione</h4>
+        <ul>
+          <li><a href="chi-siamo.html">Chi sono</a></li>
+          <li><a href="bakery.html">Bakery &amp; stagionale</a></li>
+          <li><a href="cake-design.html">Cake design</a></li>
+          <li><a href="tradizione.html">Tradizione</a></li>
+          <li><a href="aziende.html">Per le Aziende</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li> <li><a href="cookie-policy.html">Cookie Policy</a></li> 
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <p>📱 <a href="https://wa.me/+393534997642">353 499 7642</a></p>
+        <p>✉️ <a href="mailto:contatti@dragonflycakesandmore.it">contatti@dragonflycakesandmore.it</a></p>
+        <p>📍 Goito, Mantova</p>
+        <p style="margin-top:12px;">
+          <a href="https://www.instagram.com/dragonflycakesandmore/" target="_blank">Instagram</a> ·
+          <a href="https://www.facebook.com/Dragonflycakesandmore/" target="_blank">Facebook</a>
+        </p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      © 2026 Dragonfly Cakes and More — Goito, Mantova. Tutti i diritti riservati —
+      Powered by caffeine and optimism ♥
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Hamburger
+  const toggle   = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle) {
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-link').forEach(l =>
+      l.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+  }
+
+  // Carosello
+  const track   = document.getElementById('carousel-track');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const CARD_W  = 235;
+  let offset = 0;
+
+  function maxOffset() {
+    const visible = Math.floor(track.parentElement.offsetWidth / CARD_W);
+    return Math.max(0, track.children.length - visible);
+  }
+
+  nextBtn.addEventListener('click', () => {
+    offset = Math.min(offset + 1, maxOffset());
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+  prevBtn.addEventListener('click', () => {
+    offset = Math.max(offset - 1, 0);
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+  window.addEventListener('resize', () => {
+    offset = Math.min(offset, maxOffset());
+    track.style.transform = `translateX(-${offset * CARD_W}px)`;
+  });
+</script>
+
+</body>
+</html>

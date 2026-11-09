@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Torte decorate su ordinazione per compleanni e cerimonie. Artigianali, buone prima di tutto, belle quanto basta.">
+  <title>Torte su misura — Dragonfly Cakes and More</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+   <script src="js/cookie-consent.js" defer></script>
+
+  <style>
+    /* ═══════════════════════════════════════
+       HERO NUOVA CON FOTO LIMITATA ALL'ALTEZZA
+    ═══════════════════════════════════════ */
+/* 1. FASCIA HERO TEAL (deve occupare l'intera larghezza) */
+.hero-cakedesign {
+  position: relative;
+  height: 280px;
+  background-color: var(--teal);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 2. TESTO SULLA SINISTRA */
+.hero-cakedesign .hero-text {
+  position: relative;
+  z-index: 3;
+  padding-left: 8%;
+  background: transparent !important;
+  max-width: 50%;
+}
+
+.hero-cakedesign h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: var(--cream);
+  background: transparent !important;
+  margin: 0;
+}
+
+/* 3. IMMAGINE SOVRAPPOSTA CON SFUMATURA SUL PRIMO 20% */
+.hero-cakedesign::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%; /* Regola l'ampiezza dell'immagine */
+  height: 100%;
+  background: url("images/cakedesign/torta-hero-fette3.png") no-repeat right center;
+  background-size: cover; /* oppure 'contain' o 'auto 100%' a seconda della foto */
+  z-index: 1;
+  pointer-events: none;
+
+  /* Sfuma dal trasparente (fa vedere il teal sotto) al nero (fa vedere la foto) */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 20%);
+}
+
+/* 4. RIMUOVI ::after SE PRESENTE */
+.hero-cakedesign::after {
+  display: none !important;
+}
+ /* ═══════════════════════════════════════
+       SEZIONE NARRATIVA ESSENZIALE
+    ═══════════════════════════════════════ */
+    .narrative-section {
+      background: var(--cream);
+      padding: 60px 0 80px 0;
+    }
+
+    .narrative-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
+    }
+
+    .narrative-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .narrative-block.reverse {
+      direction: rtl;
+    }
+
+    .narrative-block.reverse .narrative-text {
+      direction: ltr;
+    }
+
+    .narrative-text h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .narrative-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .narrative-media {
+      position: relative;
+    }
+
+    .narrative-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(36, 63, 74, 0.06);
+      border: 1px solid var(--border);
+    }
+
+    /* ═══════════════════════════════════════
+       INVITO AI SOCIAL
+    ═══════════════════════════════════════ */
+    .social-bridge {
+      background: var(--white);
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .social-bridge-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
+    }
+
+    .social-bridge h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .social-bridge p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .social-bridge a {
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color var(--transition);
+    }
+
+    .social-bridge a:hover {
+      color: var(--green-dark);
+    }
+
+    /* ═══════════════════════════════════════
+       FLAVOUR CARD CTA
+    ═══════════════════════════════════════ */
+    .flavour-cta-section {
+      background: var(--warm);
+      padding: 80px 0;
+    }
+
+    .flavour-cta-box {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 36px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(36, 63, 74, 0.04);
+    }
+
+    .flavour-cta-box h2 {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    .flavour-cta-box p {
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .btn-whatsapp {
+      background-color: #176B73;
+      color: #ffffff !important;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      transition: background-color var(--transition);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #3D9DA5;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-cakedesign {
+        height: 300px;
+        background-size: auto 90%;
+      }
+      .hero-cakedesign .hero-text {
+        padding: 0 var(--spacing-lg);
+        width: 100%;
+      }
+      .narrative-block,
+      .narrative-block.reverse {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        direction: ltr;
+      }
+      .narrative-img {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html" aria-label="Dragonfly Cakes and More — Home">
+        <img src="images/logo/libellula-dragonfly.png" alt="Dragonfly" class="nav-logo-img">
+        <div class="nav-logo-text">
+          <span class="nav-logo-brand">Dragonfly</span>
+          <span class="nav-logo-sub">cakes and More</span>
+        </div>
+      </a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="chi-siamo.html" class="nav-link">Chi sono</a></li>
+      <li><a href="bakery.html" class="nav-link">Bakery &amp; stagionale</a></li>
+      <li><a href="cake-design.html" class="nav-link active">Cake design</a></li>
+      <li><a href="tradizione.html" class="nav-link">Tradizione</a></li>
+      <li><a href="aziende.html" class="nav-link">Per le Aziende</a></li>
+      <li><a href="contatti.html" class="nav-link">Contatti</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══ HERO ESSENZIALE ═══ -->
+<section class="hero-cakedesign">
+  <div class="hero-text">
+    <h1>Buone prima di tutto</h1>
+  </div>
+</section>
+
+<!-- ═══ CONTENUTO NARRATIVO ═══ -->
+<section class="narrative-section">
+  <div class="narrative-container">
+    
+    <!-- Blocco 1: Filosofia & Equilibrio -->
+    <div class="narrative-block">
+      <div class="narrative-text">
+        <h2>Sembra un cliché, ma non è affatto scontato.</h2>
+        <p>Il mio punto di partenza è l'equilibrio interno: la struttura, gli strati, la farcitura. La decorazione viene pensata per soddisfare l'occhio ma anche il palato, mantenendo una perfetta armonia con i sapori e le consistenze del dolce.</p>
+      </div>
+      <div class="narrative-media">
+        <img src="images/cakedesign/k-pop.jpg" alt="Dettaglio lavorazione torta" class="narrative-img">
+      </div>
+    </div>
+
+    <!-- Blocco 2: Progettazione Sartoriale -->
+    <div class="narrative-block reverse">
+      <div class="narrative-text">
+        <h2>Un progetto unico per il tuo evento</h2>
+        <p>Che si tratti di un'occasione intima o di una grande cerimonia, definiamo insieme il tema e il numero reale di ospiti per studiare altezze, strati e farciture ideali.</p>
+        <p>Per scelta non realizzo coperture integrali in pasta di zucchero né stampe — solo qualche dettaglio modellato a mano quando serve davvero. Preferisco creare per ciascun progetto una decorazione unica e sartoriale, lavorata a sac à poche o arricchita con frutta fresca di stagione.</p>
+      </div>
+      <div class="narrative-media">
+        <img src="images/cakedesign/card-piani.png" alt="Torta decorata a mano" class="narrative-img">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ INVITO AI SOCIAL ═══ -->
+<section class="social-bridge">
+  <div class="social-bridge-inner">
+    <h3>I progetti più recenti</h3>
+    <p>Ogni torta ha la sua storia e ogni evento le sue esigenze. Per scoprire le creazioni consegnate e rimanere aggiornato sulle ultime lavorazioni, ti aspetto su Instagram.</p>
+    <a href="https://www.instagram.com/dragonfly_cakesandmore/" target="_blank" rel="noopener">Guarda i lavori più recenti su @dragonfly_cakesandmore &rarr;</a>
+  </div>
+</section>
+
+<!-- ═══ CALL TO ACTION FLAVOUR CARD ═══ -->
+<section class="flavour-cta-section">
+  <div class="container">
+    <div class="flavour-cta-box">
+      <h2>Scopri le nostre combinazioni di gusto</h2>
+      <p>I nostri accostamenti e le farciture cambiano con le stagioni per garantire sempre ingredienti freschi e di massima qualità. Scrivici per ricevere la nostra <strong>Flavour Card</strong> aggiornata direttamente su WhatsApp!</p>
+      <a href="https://wa.me/+393534997642?text=Ciao!%20Vorrei%20ricevere%20la%20vostra%20Flavour%20Card%20aggiornata." target="_blank" class="btn btn-whatsapp">
+        richiedi la Flavour Card su WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h4>Dragonfly Cakes and More</h4>
+        <p>Impresa alimentare domestica<br>Goito, Mantova<br><br>P.IVA 02801090206</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigazione</h4>
+        <ul>
+          <li><a href="chi-siamo.html">Chi sono</a></li>
+          <li><a href="bakery.html">Bakery &amp; stagionale</a></li>
+          <li><a href="cake-design.html">Cake design</a></li>
+          <li><a href="tradizione.html">Tradizione</a></li>
+          <li><a href="aziende.html">Per le Aziende</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li> <li><a href="cookie-policy.html">Cookie Policy</a></li> 
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <p>📱 <a href="https://wa.me/+393534997642">353 499 7642</a></p>
+        <p>✉️ <a href="mailto:contatti@dragonflycakesandmore.it">contatti@dragonflycakesandmore.it</a></p>
+        <p>📍 Goito, Mantova</p>
+        <p style="margin-top:12px;">
+          <a href="https://www.instagram.com/dragonflycakesandmore/" target="_blank">Instagram</a> ·
+          <a href="https://www.facebook.com/Dragonflycakesandmore/" target="_blank">Facebook</a>
+        </p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      © 2026 Dragonfly Cakes and More — Goito, Mantova. Tutti i diritti riservati —
+      Powered by caffeine and optimism ♥
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+</script>
+
+</body>
+</html>

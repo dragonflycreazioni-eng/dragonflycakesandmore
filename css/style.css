@@ -816,6 +816,12 @@ a:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.footer-badge {
+  width: 72px;
+  height: 72px;
+  margin-top: var(--spacing-sm);
+}
+
 .footer-col ul {
   list-style: none;
 }

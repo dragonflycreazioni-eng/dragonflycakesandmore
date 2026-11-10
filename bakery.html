@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -405,7 +406,20 @@
       .prodotti-carousel-header { padding: 0 24px; }
       .scheda-container { padding: 0 24px; }
     }
-
+    /* ── CAROSELLO SWIPE SU MOBILE ── */
+    @media (max-width: 768px) {
+      .prodotti-carousel-outer {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 24px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .prodotti-carousel-outer::-webkit-scrollbar { display: none; }
+      .prodotti-carousel-track { transform: none !important; }
+      .prodotto-card { scroll-snap-align: start; }
+      .prodotti-carousel-nav { display: none; }
+    }
     [data-published="false"] { display: none !important; }
   </style>
 </head>
@@ -844,8 +858,8 @@
 
   function maxOffset() {
     const visible = Math.floor(track.parentElement.offsetWidth / CARD_W);
-    return Math.max(0, track.children.length - visible);
-  }
+    const cards = [...track.children].filter(c => c.offsetParent !== null).length;
+    return Math.max(0, cards - visible);  }
 
   nextBtn.addEventListener('click', () => {
     offset = Math.min(offset + 1, maxOffset());
